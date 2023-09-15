@@ -1,0 +1,129 @@
+<div class="fade-in">
+    <shared-widget [brandData]="brandData "></shared-widget>
+    
+    <c-card>
+      <c-card-header>
+        User
+      </c-card-header>
+      <c-card-body>
+        <c-row class="text-center">
+
+
+            <form cForm>
+                <div class="mb-3">
+                  <label cLabel for="nameInput">Name</label>
+                  <input cFormControl
+                         id="nameInput"
+                         placeholder="name"
+                         type="text"
+                         value="{{ user?.firstName }}"
+                  />
+                </div>
+
+                <div class="mb-3">
+                    <label cLabel for="lastNameInput">LastName</label>
+                    <input cFormControl
+                           id="lastNameInput"
+                           placeholder="lastName"
+                           type="text"
+                           value="{{ user?.lastName }}"
+                    />
+                </div>
+
+                <div class="mb-3">
+                    <label cLabel for="identityInput">Identity</label>
+                    <input cFormControl
+                           id="identityInput"
+                           placeholder="lastName"
+                           type="text"
+                           value="{{ user?.identity }}"
+                    />
+                </div>
+
+                <div class="mb-3">
+                    <label cLabel for="emailInput">Email address</label>
+                    <input cFormControl
+                           id="emailInput"
+                           placeholder="name@example.com"
+                           type="email"
+                           value="{{ user?.email }}"
+                    />
+                </div>
+
+                <div class="mb-3">
+                  <label cLabel for="phoneInput">Phone</label>
+                  <input cFormControl
+                           id="phoneInput"
+                           placeholder="5555555"
+                           type="text"
+                           value="{{ user?.phone }}"
+                    />
+                </div>
+            </form>
+
+        </c-row>
+
+        <c-row>
+          <c-col md="2">
+            <button (click)="toggleLoadMoney()" cButton>Cargar Dinero</button> 
+          </c-col>
+
+          <c-col>
+            <button (click)="toggleBuyCoins()" cButton>Comprar Monedas</button>
+          </c-col>
+          
+            <c-modal id="loadMoneyModal" [visible]="loadMoneyVisible" (visibleChange)="handleLoadMoneyChange($event)">
+              <c-modal-header>
+                <h5 cModalTitle>Cargar Dinero</h5>
+                <button (click)="toggleLoadMoney()" cButtonClose></button>
+              </c-modal-header>
+              <c-modal-body>
+                <div class="mb-3">
+                  <label cLabel for="loadMoneyInput">Cuanto vas a cargar?</label>
+                  <input cFormControl
+                           id="loadMoneyInput"
+                           placeholder="xxxxx"
+                           type="number"
+                           [(ngModel)]="loadMoneyValue"
+                    />
+                </div>
+              </c-modal-body>
+              <c-modal-footer>
+                <button (click)="toggleLoadMoney()" cButton color="secondary">
+                  Cerrar
+                </button>
+                <button cButton color="primary" (click)="loadMoney()">Enviar</button>
+              </c-modal-footer>
+            </c-modal>
+
+            <c-modal id="buyCoinsModal" [visible]="buyCoinsVisible" (visibleChange)="handleBuyCoinsChange($event)">
+              <c-modal-header>
+                <h5 cModalTitle>Comprar Monedas</h5>
+                <button (click)="toggleBuyCoins()" cButtonClose></button>
+              </c-modal-header>
+              <c-modal-body>
+                <div class="mb-3">
+                  <label cLabel for="buyCoinsInput">Cuantas vas a comprar?</label>
+                  <input cFormControl
+                           id="buyCoinsInput"
+                           placeholder="xxxxx"
+                           type="number"
+                           [(ngModel)]="buyCoinsValue"
+                    />
+                </div>
+              </c-modal-body>
+              <c-modal-footer>
+                <button (click)="toggleBuyCoins()" cButton color="secondary">
+                  Cerrar
+                </button>
+                <button cButton color="primary" (click)="buyCoins()">Comprar</button>
+              </c-modal-footer>
+            </c-modal>
+        </c-row>
+
+      </c-card-body>
+    </c-card>
+
+    <!-- <app-widgets-brand></app-widgets-brand> -->
+    
+  </div>

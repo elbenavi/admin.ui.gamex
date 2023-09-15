@@ -1,0 +1,13 @@
+<c-row>
+    <c-col *ngFor="let widget of brandData; index as i" sm="6" xl="3">
+      <c-widget-stat-d
+        color="primary"
+        [values]="widget.values"
+        class="mb-4"
+      >
+         <svg name="cibMastercard" cIcon class="my-4 text-white" height="52"></svg>
+
+      </c-widget-stat-d>
+    </c-col>
+  </c-row>
+  
